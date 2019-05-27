@@ -72,9 +72,16 @@ const CGFloat viewHeight = 50;
 	
 	ComplicatedView* complicatedView = [[ComplicatedView alloc] initWithFrame:CGRectMake(60, 60, 220, 70)];
 	[self.view addSubview:complicatedView];
+    
+    UISwipeGestureRecognizer *swipeRec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(recognizerWorked:)];
+    swipeRec.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeRec];
 	
 }
-
+-(void)recognizerWorked:(UIGestureRecognizer *)recognizer
+{
+    NSLog(@"regognizer worked");
+}
 - (void)deleteLabels
 {
 	for (UIView *view in self.view.subviews)
