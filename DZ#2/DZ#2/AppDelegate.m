@@ -22,11 +22,15 @@
     
     //Content
     RedViewController *redViewControllerFirst = [RedViewController new];
+    redViewControllerFirst.view.translatesAutoresizingMaskIntoConstraints = NO;
     RedViewController *redViewControllerSecond = [RedViewController new];
+    redViewControllerSecond.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     //Content
     BlueViewController *blueViewControllerFirst = [BlueViewController new];
+    blueViewControllerFirst.view.translatesAutoresizingMaskIntoConstraints = NO;
     BlueViewController *blueViewControllerSecond = [BlueViewController new];
+    blueViewControllerSecond.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     CustomContainerController *customControllerFirst = [CustomContainerController new];
     customControllerFirst.tabBarItem.title = @"First";
@@ -35,24 +39,48 @@
     
     // Добавление contentControllers на первую вкладку
     [customControllerFirst addChildViewController:redViewControllerFirst];
-    redViewControllerFirst.view.frame = CGRectMake(0, 0, customControllerFirst.view.frame.size.width, customControllerFirst.view.frame.size.height/2.f);
     [customControllerFirst.view addSubview:redViewControllerFirst.view];
+    
+    // constraints redViewControllerFirst
+    [redViewControllerFirst.view.topAnchor constraintEqualToAnchor:customControllerFirst.view.topAnchor].active = YES;
+    [redViewControllerFirst.view.bottomAnchor constraintEqualToAnchor:customControllerFirst.view.bottomAnchor].active = YES;
+    [redViewControllerFirst.view.leftAnchor constraintEqualToAnchor:customControllerFirst.view.leftAnchor].active = YES;
+    [redViewControllerFirst.view.rightAnchor constraintEqualToAnchor:customControllerFirst.view.centerXAnchor].active = YES;
+    
     [redViewControllerFirst didMoveToParentViewController:customControllerFirst];
     
     [customControllerFirst addChildViewController:blueViewControllerFirst];
-    blueViewControllerFirst.view.frame = CGRectMake(0, customControllerFirst.view.frame.size.height/2.f, customControllerFirst.view.frame.size.width, customControllerFirst.view.frame.size.height/2.f);
     [customControllerFirst.view addSubview:blueViewControllerFirst.view];
+    
+    // constraints blueViewController
+    [blueViewControllerFirst.view.topAnchor constraintEqualToAnchor:customControllerFirst.view.topAnchor].active = YES;
+    [blueViewControllerFirst.view.bottomAnchor constraintEqualToAnchor:customControllerFirst.view.bottomAnchor].active = YES;
+    [blueViewControllerFirst.view.rightAnchor constraintEqualToAnchor:customControllerFirst.view.rightAnchor].active = YES;
+    [blueViewControllerFirst.view.leftAnchor constraintEqualToAnchor:customControllerFirst.view.centerXAnchor].active = YES;
+    
     [blueViewControllerFirst didMoveToParentViewController:customControllerFirst];
     
      // Добавление contentControllers на вторую вкладку
     [customControllerSecond addChildViewController:redViewControllerSecond];
-    redViewControllerSecond.view.frame = CGRectMake(0, 0, customControllerSecond.view.frame.size.width/2.f, customControllerSecond.view.frame.size.height);
     [customControllerSecond.view addSubview:redViewControllerSecond.view];
+    
+    // constraints redViewControllerFirst
+    [redViewControllerSecond.view.topAnchor constraintEqualToAnchor:customControllerSecond.view.topAnchor].active = YES;
+    [redViewControllerSecond.view.bottomAnchor constraintEqualToAnchor:customControllerSecond.view.centerYAnchor].active = YES;
+    [redViewControllerSecond.view.leftAnchor constraintEqualToAnchor:customControllerSecond.view.leftAnchor].active = YES;
+    [redViewControllerSecond.view.rightAnchor constraintEqualToAnchor:customControllerSecond.view.rightAnchor].active = YES;
+    
     [redViewControllerSecond didMoveToParentViewController:customControllerSecond];
     
     [customControllerSecond addChildViewController:blueViewControllerSecond];
-    blueViewControllerSecond.view.frame = CGRectMake(customControllerSecond.view.frame.size.width/2.f, 0, customControllerSecond.view.frame.size.width/2.f, customControllerSecond.view.frame.size.height);
     [customControllerSecond.view addSubview:blueViewControllerSecond.view];
+    
+    // constraints blueViewController
+    [blueViewControllerSecond.view.topAnchor constraintEqualToAnchor:customControllerSecond.view.centerYAnchor].active = YES;
+    [blueViewControllerSecond.view.bottomAnchor constraintEqualToAnchor:customControllerSecond.view.bottomAnchor].active = YES;
+    [blueViewControllerSecond.view.rightAnchor constraintEqualToAnchor:customControllerSecond.view.rightAnchor].active = YES;
+    [blueViewControllerSecond.view.leftAnchor constraintEqualToAnchor:customControllerSecond.view.leftAnchor].active = YES;
+    
     [blueViewControllerSecond didMoveToParentViewController:customControllerSecond];
     
     
