@@ -12,15 +12,6 @@
 
 - (instancetype) initWithFrame:(CGRect)frame
 {
-    /*
-     super.init(frame: frame)
-     imageView = UIImageView()
-     imageView.frame = contentView.frame
-     contentView.addSubview(imageView)
-     
-     imageViewBack = UIImageView()
-     imageViewBack.frame = contentView.frame
-     */
     
     self = [super initWithFrame:frame];
     
@@ -35,8 +26,6 @@
     _spinner = [[UIActivityIndicatorView alloc] init];
     [self.contentView addSubview:_spinner];
     [_spinner setCenter:self.contentView.center];
-    
-    //_spinnerKey = NO;
     
     _imageView.layer.cornerRadius = 20;
     self.contentView.layer.cornerRadius = 20;

@@ -9,7 +9,6 @@
 @protocol NetworkServiceOutputProtocol <NSObject>
 @optional
 
-- (void)loadingContinuesWithProgress:(double)progress;
 - (void)loadingIsDoneWithDataRecieved:(NSData *)dataRecieved;
 
 @end

@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UIActivityIndicatorView *spinner;
-@property (nonatomic,assign) BOOL spinnerKey;
 - (instancetype) initWithFrame:(CGRect)frame;
 
 

@@ -116,21 +116,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return count;
-    // self.imageArray.count;
+    return self.arrayOfPictures.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
     PictureCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
-//    if (cell.spinnerKey == YES)
-//    {
-//        [cell.spinner startAnimating];
-//    } else {
-//        [cell.spinner stopAnimating];
-//    }
-//    cell.spinnerKey = !cell.spinnerKey;
     
     UIImage *image = self.arrayOfPictures[indexPath.item];
     if (image != [NSNull null])
