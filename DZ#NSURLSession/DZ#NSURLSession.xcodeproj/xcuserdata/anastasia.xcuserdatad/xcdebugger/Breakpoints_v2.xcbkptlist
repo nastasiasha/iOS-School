@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DZ#NSURLSession/DetailsViewController.m"
-            timestampString = "583096856.294901"
+            timestampString = "583269937.127301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DZ#NSURLSession/DetailsViewController.m"
-            timestampString = "583096856.2950211"
+            timestampString = "583269937.127845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DZ#NSURLSession/DetailsViewController.m"
-            timestampString = "583096856.2954381"
+            timestampString = "583269937.128305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -57,29 +57,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DZ#NSURLSession/MainViewController.m"
-            timestampString = "583096856.295626"
+            filePath = "DZ#NSURLSession/NetworkService.m"
+            timestampString = "583269937.128921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-findFlickrPhotoWithSearchString:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[NetworkService findFlickrPhotoWithSearchString:]_block_invoke_2"
+                  moduleName = "DZ#NSURLSession"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/Desktop/SberbankIOSSchool/iOS-School/DZ%23NSURLSession/DZ%23NSURLSession/NetworkService.m"
+                  timestampString = "583255969.1064039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "178">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[NetworkService findFlickrPhotoWithSearchString:]_block_invoke_3"
+                  moduleName = "DZ#NSURLSession"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anastasia/Desktop/SberbankIOSSchool/iOS-School/DZ%23NSURLSession/DZ%23NSURLSession/NetworkService.m"
+                  timestampString = "583255969.1208349"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DZ#NSURLSession/NetworkService.m"
-            timestampString = "583096856.295754"
+            filePath = "DZ#NSURLSession/MainViewController.m"
+            timestampString = "583269937.129016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-findFlickrPhotoWithSearchString:"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-loadingIsDoneWithDataRecieved:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

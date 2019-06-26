@@ -16,6 +16,7 @@
 		5D331E8822BD0921007B9C0A /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331E8722BD0921007B9C0A /* NetworkHelper.m */; };
 		5D331E8C22BD098D007B9C0A /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331E8B22BD098D007B9C0A /* NetworkService.m */; };
 		5D331E9422BD357D007B9C0A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331E9322BD357D007B9C0A /* DetailsViewController.m */; };
+		5D331ED822C3BC5C007B9C0A /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D331ED722C3BC5C007B9C0A /* Photo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		5D331E8D22BD0B75007B9C0A /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkServiceProtocol.h; sourceTree = "<group>"; };
 		5D331E9222BD357D007B9C0A /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		5D331E9322BD357D007B9C0A /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		5D331ED622C3BC5C007B9C0A /* Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		5D331ED722C3BC5C007B9C0A /* Photo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				5D331E8922BD0960007B9C0A /* Network */,
+				5D331ED922C3BC65007B9C0A /* Photo */,
 				5D331ED522C156D7007B9C0A /* Cell */,
 				5D331E6A22BCE60A007B9C0A /* AppDelegate.h */,
 				5D331E6B22BCE60A007B9C0A /* AppDelegate.m */,
@@ -104,6 +108,15 @@
 				5D331E8122BCFDBB007B9C0A /* PictureCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		5D331ED922C3BC65007B9C0A /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				5D331ED622C3BC5C007B9C0A /* Photo.h */,
+				5D331ED722C3BC5C007B9C0A /* Photo.m */,
+			);
+			name = Photo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +192,7 @@
 				5D331E6F22BCE60A007B9C0A /* MainViewController.m in Sources */,
 				5D331E7A22BCE60C007B9C0A /* main.m in Sources */,
 				5D331E6C22BCE60A007B9C0A /* AppDelegate.m in Sources */,
+				5D331ED822C3BC5C007B9C0A /* Photo.m in Sources */,
 				5D331E9422BD357D007B9C0A /* DetailsViewController.m in Sources */,
 				5D331E8C22BD098D007B9C0A /* NetworkService.m in Sources */,
 				5D331E8822BD0921007B9C0A /* NetworkHelper.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "NetworkService.h"
+#import "Photo.h"
 
 
 @interface NetworkService ()
@@ -62,14 +63,16 @@
             NSString *serverID = i[@"server"];
             NSString *ID = i[@"id"];
             NSString *secret = i[@"secret"];
+            NSString *title = i[@"title"];
             
             NSString *location = [NSString stringWithFormat:@"https://farm1.staticflickr.com/%@/%@_%@.jpg",serverID,ID,secret];
 //            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:location]];
             NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
             NSURL *url = [NSURL URLWithString:location];
             [[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                Photo *photo = [[Photo alloc] initWithName:title image:data];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.output loadingIsDoneWithDataRecieved:data];
+                    [self.output loadingIsDoneWithDataRecieved:photo];
                 });
             }] resume];
             

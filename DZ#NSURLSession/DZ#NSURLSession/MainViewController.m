@@ -11,6 +11,7 @@
 #import "NetworkService.h"
 #import "NetworkServiceProtocol.h"
 #import "DetailsViewController.h"
+#import "Photo.h"
 
 @interface MainViewController () <UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, NetworkServiceOutputProtocol>
 
@@ -18,7 +19,7 @@
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) UILayoutGuide *guide;
 @property (nonatomic, strong) NetworkService *networkService;
-@property (nonatomic, strong) NSMutableArray<UIImage *> *arrayOfPictures;
+@property (nonatomic,strong) NSMutableArray<Photo *> *imagesArray;
 
 @end
 
@@ -27,9 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.arrayOfPictures = [[NSMutableArray alloc] initWithCapacity:count];
-    [self initArrayOfPictures];
-    //self.arrayOfPictures = [NSMutableArray arrayWithObjects:nil,nil,nil,nil,nil,nil, nil];
+    self.imagesArray = [[NSMutableArray alloc] initWithCapacity:count];
+    [self initImagesArray];
     
     [self setupUI];
     [self setupSearchBar];
@@ -37,13 +37,13 @@
     [self setupNetworkService];
 }
 
-- (void)initArrayOfPictures
+- (void)initImagesArray
 {
-    [self.arrayOfPictures removeAllObjects];
+    [self.imagesArray removeAllObjects];
     NSNull *element = [NSNull null];
     for (NSInteger i = 0; i < count; i++)
     {
-        [self.arrayOfPictures addObject:element];
+        [self.imagesArray addObject:element];
     }
 }
 
@@ -105,7 +105,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self initArrayOfPictures];
+    [self initImagesArray];
     self.collectionView.alpha = 1.0;
     [self.collectionView reloadData];
     NSString *wordForSearch = [searchBar.text lowercaseString];
@@ -116,7 +116,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.arrayOfPictures.count;
+    return self.imagesArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -124,9 +124,11 @@
 
     PictureCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
     
-    UIImage *image = self.arrayOfPictures[indexPath.item];
-    if (image != [NSNull null])
+    Photo *newPhoto = self.imagesArray[indexPath.item];
+
+    if (newPhoto != [NSNull null])
     {
+        UIImage *image = newPhoto.image;
         [UIView transitionWithView:cell.imageView
                           duration:1.0f
                            options:UIViewAnimationOptionTransitionCrossDissolve
@@ -139,10 +141,9 @@
         [cell.spinner startAnimating];
         
     }
-    
-    
+
     return cell;
-    
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -152,26 +153,25 @@
     {
         DetailsViewController *detailsVC = [DetailsViewController new];
         detailsVC.imageView = [UIImageView new];
-        detailsVC.imageView.image = cell.imageView.image;
+        detailsVC.imageView.image = self.imagesArray[indexPath.item].image;
+        detailsVC.nameOfImage = [UILabel new];
+        detailsVC.nameOfImage.text = self.imagesArray[indexPath.item].name;
         [self.navigationController pushViewController:detailsVC animated:true];
         
     }
     
 }
 
-- (void)loadingIsDoneWithDataRecieved:(NSData *)dataRecieved
+- (void)loadingIsDoneWithDataRecieved:(Photo *)dataRecieved
 {
-    UIImage *image = [UIImage imageWithData:dataRecieved];
-
-    NSInteger i = [self.arrayOfPictures indexOfObject:[NSNull null]];
-    [self.arrayOfPictures replaceObjectAtIndex:i withObject:image];
+    
+    NSInteger i = [self.imagesArray indexOfObject:[NSNull null]];
+    
+    [self.imagesArray replaceObjectAtIndex:i withObject:dataRecieved];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 
-   
 }
-
-
 
 @end
