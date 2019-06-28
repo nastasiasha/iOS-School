@@ -40,11 +40,7 @@
 - (void)initImagesArray
 {
     [self.imagesArray removeAllObjects];
-    NSNull *element = [NSNull null];
-    for (NSInteger i = 0; i < count; i++)
-    {
-        [self.imagesArray addObject:element];
-    }
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -116,21 +112,20 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.imagesArray.count;
+    return count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
     PictureCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"idCell" forIndexPath:indexPath];
-    
-    Photo *newPhoto = self.imagesArray[indexPath.item];
 
-    if (newPhoto != [NSNull null])
+    if (indexPath.item < self.imagesArray.count)
     {
+        Photo *newPhoto = self.imagesArray[indexPath.item];
         UIImage *image = newPhoto.image;
         [UIView transitionWithView:cell.imageView
-                          duration:1.0f
+                          duration:0.1f
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{
                              [cell.imageView setImage:image];
@@ -164,11 +159,10 @@
 
 - (void)loadingIsDoneWithDataRecieved:(Photo *)dataRecieved
 {
+
+    [self.imagesArray addObject:dataRecieved];
     
-    NSInteger i = [self.imagesArray indexOfObject:[NSNull null]];
-    
-    [self.imagesArray replaceObjectAtIndex:i withObject:dataRecieved];
-    
+    NSUInteger i = self.imagesArray.count - 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 
