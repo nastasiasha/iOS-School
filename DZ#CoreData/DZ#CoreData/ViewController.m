@@ -15,7 +15,6 @@
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *resultArray;
 @property (nonatomic,strong) NSFetchedResultsController *resultController;
 
 @end
