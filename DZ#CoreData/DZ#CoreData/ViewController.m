@@ -15,15 +15,26 @@
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) NSManagedObjectContext *context;
 @property (nonatomic,strong) NSFetchedResultsController *resultController;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
+     self.context = [CoreDataStack shared].container.newBackgroundContext;
+    
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"dataIsWriten"];
+    
+    if (data == nil)
+    {
+        [self write];
+        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"dataIsWriten"];
+    }
     [self read];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -31,30 +42,24 @@
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    //[self write];
-
 }
 
 - (void) write
 {
-    [[CoreDataStack shared].container performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
-        
+    [self.context performBlock:^{
         for (NSInteger index = 0; index < 1000; index ++)
         {
-            MOIndex *object = [[MOIndex alloc] initWithContext:context];
+            MOIndex *object = [[MOIndex alloc] initWithContext:self.context];
             object.index = index;
             NSLog(@"%ld",(long)index);
         }
-        [context save:nil];
+        [self.context save:nil];
         NSLog(@"Done!");
     }];
 }
 
 - (void) read
 {
-    NSManagedObjectContext *viewContext = [CoreDataStack shared].container.viewContext;
-    
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Index"];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
@@ -62,14 +67,10 @@
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [request setSortDescriptors:sortDescriptors];
     
-    self.resultController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:viewContext sectionNameKeyPath:nil cacheName:nil];
+    self.resultController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
     
     [self.resultController performFetch:nil];
 
-}
-
-- (void)configureCell:(CustomTableViewCell *)cell withObject:(MOIndex *)object {
-    cell.label.text = [[NSString alloc] initWithFormat:@"index : %li",object.index];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -82,8 +83,8 @@
     CustomTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"id"];
     
     MOIndex *object = [self.resultController objectAtIndexPath:indexPath];
+    [cell configureWithObject:object];
     
-    [self configureCell:cell withObject:object];
     return cell;
 }
 

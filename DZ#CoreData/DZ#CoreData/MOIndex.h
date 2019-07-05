@@ -11,8 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/**
+ Класс для CoreData
+ */
 @interface MOIndex : NSManagedObject
 
+/**
+ Поле, хранящее порядковый номер объекта
+ */
 @property (nonatomic,assign) NSInteger index;
 
 @end

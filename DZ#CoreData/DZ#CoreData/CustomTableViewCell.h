@@ -7,12 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MOIndex.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Кастомная ячейка для таблицы
+ */
 @interface CustomTableViewCell : UITableViewCell
 
+/**
+ Метка для отображения индекса объекта
+ */
 @property (nonatomic,readonly) UILabel *label;
+
+/**
+ Метод для выставления индекса объекта в метку ячейки
+
+ @param object объект из CoreData
+ */
+- (void)configureWithObject:(MOIndex *)object;
 
 @end
 

@@ -28,6 +28,11 @@
     return self;
 }
 
+- (void)configureWithObject:(MOIndex *)object
+{
+    self.label.text = [[NSString alloc] initWithFormat:@"index : %li",object.index];
+}
+
 
 - (void)prepareForReuse
 {
